@@ -1,5 +1,10 @@
 module Main where
 
+-- :Hint:
+--
+-- instance Num String where
+--   ...
+
 main :: IO ()
 main = do
   putStrLn "May I have your name?"
