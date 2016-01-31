@@ -11,5 +11,6 @@ main = do
   name <- getLine
   putStrLn $ "Congratulations, " + name + " has now mastered class Num!"
 
---  {- Can you also make this work? -}
+--  {- Can you also make these work? -}
+--  putStrLn 5963
 --  putStrLn $ 3 * ("All hail " + name + "! ")
