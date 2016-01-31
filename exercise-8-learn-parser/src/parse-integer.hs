@@ -6,7 +6,10 @@ import Text.PrettyPrint.ANSI.Leijen(putDoc)
 
 
 additions :: Parser [Integer]
-additions = integer `sepBy` symbol "+"
+additions = do
+  xs <- integer `sepBy` symbol "+"
+  eof
+  return xs
 
 
 main = do
