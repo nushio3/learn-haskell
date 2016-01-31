@@ -1,0 +1,2 @@
+
+The purpose of this project is to design a high-level language for implementing explicit partial-differential equations solvers on supercomputers as well as today’s advanced personal computers. A language to describe the knowledge on algebraic concepts, physical equations, integration algorithms, optimization techniques, and hardware designs --- all the necessaries of the simulations in abstract, modular, re-usable and combinable forms.
