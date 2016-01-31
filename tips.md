@@ -1,11 +1,56 @@
 # Stackの使い方
 
-## `hello-project`という名前の新しいプロジェクトを作る
+## インタプリタ編
+
+`stack ghci`で、プロジェクトの`stack.yaml`に従った環境、または
+stackのグローバル設定ファイル`~/.stack/global-project/stack.yaml`に従った環境でインタプリタが起動する。
+
+### インタプリタのプロンプトを簡潔にする
+
+デフォルトの設定では、インタプリタのプロンプトにはロードされているモジュールの一覧が表示される。モジュールが多すぎると見にくくなることも。
+この設定は、`:set prompt`で変更できる。
+
+```
+~$ stack ghci
+Run from outside a project, using implicit global project config
+Using resolver: lts-5.0 from implicit global project's config file: /home/nushio/.stack/global-project/stack.yaml
+Error parsing targets: The specified targets matched no packages.
+Perhaps you need to run 'stack init'?
+Warning: build failed, but optimistically launching GHCi anyway
+Configuring GHCi with the following packages:
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+Ok, modules loaded: none.
+Prelude>
+Prelude> import Data.Map
+Prelude Data.Map> import Data.List
+Prelude Data.Map Data.List> import Data.Array.Storable.Internals
+Prelude Data.Map Data.List Data.Array.Storable.Internals> print $ 1+1
+2
+Prelude Data.Map Data.List Data.Array.Storable.Internals> :set prompt "> "
+> print $ 1+1
+2
+>
+```
+
+ホームフォルダの`.ghci`ファイルにghciへの入力を書いておくと、ghciを起動するたびにこれを実行してくれる。
+```
+$ cat ~/.ghci
+:set -W -fno-warn-unused-imports
+:seti -XDataKinds -XPolyKinds -XTypeFamilies -XScopedTypeVariables -XGADTs -XTypeOperators -XTemplateHaskell
+:def x (\t -> return (":kind! " ++ t))
+:set prompt "> "
+let myName = "Takayuki Muranushi"
+putStrLn "今日もHappy Hacking!"
+```
+
+## ビルド編
+
+### `hello-project`という名前の新しいプロジェクトを作る
 ````
 $ stack new hello-project simple
 ````
 
-## プロジェクトのビルド
+### プロジェクトのビルド
 プロジェクトのフォルダに移動して`stack build`
 ````
 $ cd hello-project
@@ -22,7 +67,7 @@ Installing executable(s) in
 ````
 実行ファイルは、stackが生成するバージョン固有のフォルダ(`.stack-work/install/x86_64-linux/lts-5.0/7.10.3/bin`など)に生成されます。どこに生成したかはstackが言ってくれます (`Installing executable(s) in...`)
 
-## ビルドされたファイルの実行
+### ビルドされたファイルの実行
 
 `stack exec`で、stackが所在を把握している実行ファイルを実行してくれます。
 
@@ -31,7 +76,7 @@ $ stack exec hello-project
 hello world
 ````
 
-## お手軽開発支援
+### お手軽開発支援
 
 次のようにすると、ファイルの変更を監視して繰り返しビルドしてくれる。
 ````
@@ -41,7 +86,7 @@ $ stack build --file-watch
 
 
 
-## stackが生成するファイルの構造
+### stackが生成するファイルの構造
 
 ````
 $ tree hello-project/
@@ -55,10 +100,10 @@ hello-project/
 
 1 directory, 5 files
 ````
-##
+###
 
 ```
-$ cat hello-project.cabal 
+$ cat hello-project.cabal
 name:                hello-project
 version:             0.1.0.0
 synopsis:            Simple project template from stack
@@ -84,7 +129,7 @@ executable hello-project　　　　　　-- 生成される実行ファイル�
 ```
 
 
-## テンプレートの一覧を表示する
+### テンプレートの一覧を表示する
 ````
 $ stack templates
 chrisdone
