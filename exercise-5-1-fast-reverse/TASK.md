@@ -1,4 +1,4 @@
-# exercise 5. faster reverse
+# exercise 5-1. faster reverse
 
 exercise 4. reverse the string で作ったプログラムは、文字列をCharのリストとして扱っているため、実行速度が遅くなっています。文字列処理用のライブラリtext　https://hackage.haskell.org/package/text を利用して、このプログラムをより高速にしてみましょう。
 
