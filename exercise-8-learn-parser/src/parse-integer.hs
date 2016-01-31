@@ -1,19 +1,19 @@
 module Main where
 
 import Text.Trifecta
+import Text.Trifecta.Delta(Delta(..))
+import Text.PrettyPrint.ANSI.Leijen(putDoc)
 
-question :: Parser ()
-question = do
-  many $ satisfy $ (/= "?")
-  string "?"
-  eof
+
+additions :: Parser [Integer]
+additions = integer `sepBy` symbol "+"
 
 
 main = do
   str <- getLine
-  case parseString question (Columns 0 0) str of
-    Failure xs -> do
-      displayLn xs
-      putStrLn "質問ではない。"
-    Success _  -> putStrLn "質問ありがとう。"
+  case parseString additions (Columns 0 0) str of
+    Failure doc -> do
+      putDoc doc
+      putStrLn "I can't understand this expression!"
+    Success xs -> print $ sum xs
   main
