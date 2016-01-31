@@ -1,6 +1,6 @@
 module Main where
 
--- :Hint:
+-- {- Hint -}
 --
 -- instance Num String where
 --   ...
@@ -10,3 +10,6 @@ main = do
   putStrLn "May I have your name?"
   name <- getLine
   putStrLn $ "Congratulations, " + name + " has now mastered class Num!"
+
+--  {- Can you also make this work? -}
+--  putStrLn $ 3 * ("All hail " + name + "! ")
