@@ -15,3 +15,7 @@ main = do
 
   print $ u × v
   -- Vec (-10) 20 (-10) と表示されてほしい！
+
+  -- VecはFoldableのインスタンスなので、ベクトル３成分の最大値・最小値が求められる。
+  print $ maximum v
+  print $ minimum v

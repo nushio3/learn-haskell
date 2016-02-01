@@ -18,6 +18,10 @@ instance Num a => Num (Vec a) where
 instance Functor Vec where
   fmap f (Vec x y z) = undefined
 
+instance Applicative Vec where
+  pure a = undefined
+  (Vec ax ay az) <*> (Vec bx by bz) = undefined
+
 instance Foldable Vec where
   foldMap toMonoid (Vec x y z) = undefined
 
