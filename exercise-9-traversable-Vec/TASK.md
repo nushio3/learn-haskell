@@ -1,11 +1,8 @@
-# exercise 6-1. 3次元ベクトルを表す型を作ろう
+# exercise 9-1. 3次元ベクトルをTraversableにしよう。
 
-app/Main.hs では3次元ベクトルを表す型 Vec が使える前提でプログラムを書いています。
-この型は Data/Vec.hs にて
+Data/Vec.hs の定義のうち、exercise 6-1から流用できる部分は流用してください。
+さらに、Vec型のFoldable, Traversableインスタンスを書いてみましょう。
 
-```
-data Vec a = Vec a a a
-```
 
 として定義されかかっていますが、実装はまだ途中です。
 
