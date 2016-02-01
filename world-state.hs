@@ -17,9 +17,11 @@ inChar = P $
 
 inLine :: P String
 inLine = P $
-  \(i, o) -> 
-     ((dropWhile (/='\n') i, o), 
-       takeWhile (/='\n') i)
+  \(i, o) ->
+    let i2 = drop 1 $ 
+             dropWhile (/='\n') i 
+        line = takeWhile (/='\n') i 
+    in ((i2, o), line)
 
 outChar :: Char -> P ()
 outChar c = P $
