@@ -2,7 +2,8 @@ module Main where
 
 -- {- Hint -}
 --
--- instance Num String where
+instance Num String where
+  a + b = a ++ b
 --   ...
 
 main :: IO ()
