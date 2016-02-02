@@ -154,3 +154,11 @@ yesod-postgres-fay
 yesod-simple
 yesod-sqlite
 ````
+
+### ネットに繋がらない！けどプロジェクトを作りたい。
+
+ローカルに既にダウンロードされているテンプレートのファイル名を指定することができます。
+
+```
+stack new offline-project ~/.stack/templates/simple.hsfiles
+```
