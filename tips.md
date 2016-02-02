@@ -100,7 +100,7 @@ hello-project/
 
 1 directory, 5 files
 ````
-###
+###　プロジェクトで利用するライブラリの追加
 
 ```
 $ cat hello-project.cabal
@@ -124,7 +124,7 @@ executable hello-project　　　　　　-- 生成される実行ファイル�
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
                      , quickcheck   -- 使いたいライブラリはここに追記します
-                     , text
+                     , text         -- textを使いたい場合
                      , vector
 ```
 
